@@ -1,0 +1,41 @@
+{% extends 'base.html' %}
+{% block content %}
+<div class="container">
+		<h2>Update {{Employee.name}}</h2>
+	<form action="/update/{{Employee.id}}" method="post">
+      {% csrf_token %}
+		<div class="form-group">
+    <label>Name</label>
+    <input type="text" class="form-control" name="name" value="{{Employee.name}}" required>
+  </div>
+  <div class="form-group">
+    <label>Email</label>
+    <input type="email" class="form-control"  name="email" value="{{Employee.email}}" required>
+  </div>
+      <div class="form-group">
+    <label>Occupation</label>
+    <input type="text" class="form-control"  name="occupation" value="{{Employee.occupation}}" required>
+  </div>
+        <div class="form-group">
+    <label>Salary</label>
+    <input type="number" class="form-control"  name="salary" value="{{Employee.salary}}" required>
+  </div>
+      <label>Gender</label>
+<div class="input-group">
+  <div class="input-group-text">
+    <input class="form-check-input mt-0" type="radio" value="M" aria-label="Radio button for following text input" name="gender" required>M
+  </div>
+    <div class="input-group-text">
+      <input class="form-check-input mt-0" type="radio" value="F" aria-label="Radio button for following text input" name="gender">F
+  </div>
+</div>
+        <br>
+  <button type="submit" class="btn btn-primary" name="create">Save</button>
+{% if info %}
+        <div class="alert alert-success" role="alert">
+  <p>Employee {{info}} is added successfully!"</p>
+        </div>
+        {% endif %}
+    </form>
+</div>
+{% endblock %}
